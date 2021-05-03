@@ -1,3 +1,7 @@
+Leilao (Alura\Leilao\Tests\Model\Leilao)
+ [x] Leilao deve receber lances with data set "leilao-2-lances"
+ [x] Leilao deve receber lances with data set "leilao-1-lance"
+
 Avaliador (Alura\Leilao\Tests\Service\Avaliador)
  [x] Avaliador deve encontrar o maior valor de lances with data set "leilao-ordem-crescente"
  [x] Avaliador deve encontrar o maior valor de lances with data set "leilao-ordem-decrescente"
@@ -5,7 +9,7 @@ Avaliador (Alura\Leilao\Tests\Service\Avaliador)
  [x] Avaliador deve encontrar o menor valor de lances with data set "leilao-ordem-crescente"
  [x] Avaliador deve encontrar o menor valor de lances with data set "leilao-ordem-decrescente"
  [x] Avaliador deve encontrar o menor valor de lances with data set "leilao-ordem-aleatoria"
- [ ] Avaliador deve buscar 3 maiores valores with data set "leilao-ordem-crescente"
- [ ] Avaliador deve buscar 3 maiores valores with data set "leilao-ordem-decrescente"
- [ ] Avaliador deve buscar 3 maiores valores with data set "leilao-ordem-aleatoria"
+ [x] Avaliador deve buscar 3 maiores valores with data set "leilao-ordem-crescente"
+ [x] Avaliador deve buscar 3 maiores valores with data set "leilao-ordem-decrescente"
+ [x] Avaliador deve buscar 3 maiores valores with data set "leilao-ordem-aleatoria"
 
