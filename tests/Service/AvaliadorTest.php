@@ -8,8 +8,20 @@ use Alura\Leilao\Model\Leilao;
 use Alura\Leilao\Model\Usuario;
 use Alura\Leilao\Service\Avaliador;
 
+/**
+ * @link http://wiki.c2.com/?ArrangeActAssert
+ * @link https://martinfowler.com/bliki/GivenWhenThen.html
+ */
+
 class AvaliadorTest extends TestCase
 {
+    private $leiloeiro;
+
+    public function setUp(): void
+    {
+        $this->leiloeiro = new Avaliador();
+    }
+
     /**
      * @dataProvider leilaoEmOrdemCrescente
      * @dataProvider leilaoEmOrdemDecrescente
@@ -17,19 +29,12 @@ class AvaliadorTest extends TestCase
      */
     public function testAvaliadorDeveEncontrarOMaiorValorDeLances(Leilao $leilao)
     {
-        /**
-         * @link http://wiki.c2.com/?ArrangeActAssert
-         * @link https://martinfowler.com/bliki/GivenWhenThen.html
-         */
-
         // Act - When
-        $leiloeiro = new Avaliador();
-        $leiloeiro->avalia($leilao);
+        $this->leiloeiro->avalia($leilao);
 
-        $maiorValor = $leiloeiro->getMaiorValor();
+        $maiorValor = $this->leiloeiro->getMaiorValor();
 
         // Assert - Then
-        // self::assertEquals(2500, $maiorValor);
         $this->assertEquals(2500, $maiorValor);
     }
 
@@ -40,23 +45,10 @@ class AvaliadorTest extends TestCase
      */
     public function testAvaliadorDeveEncontrarOMenorValorDeLances(Leilao $leilao)
     {
-        /**
-         * @link http://wiki.c2.com/?ArrangeActAssert
-         * @link https://martinfowler.com/bliki/GivenWhenThen.html
-         */
-
-        // Arrange - Given
-        $joao = new Usuario('João');
-        $maria = new Usuario('Maria');
-
-        $leilao->recebeLance(new Lance($joao, 2000));
-        $leilao->recebeLance(new Lance($maria, 2500));
-
         // Act - When
-        $leiloeiro = new Avaliador();
-        $leiloeiro->avalia($leilao);
+        $this->leiloeiro->avalia($leilao);
 
-        $menorValor = $leiloeiro->getMenorValor();
+        $menorValor = $this->leiloeiro->getMenorValor();
 
         // Assert - Then
         $this->assertEquals(1700, $menorValor);
@@ -69,10 +61,9 @@ class AvaliadorTest extends TestCase
      */
     public function testAvaliadorDeveBuscar3MaioresValores(Leilao $leilao)
     {
-        $leiloeiro = new Avaliador();
-        $leiloeiro->avalia($leilao);
+        $this->leiloeiro->avalia($leilao);
 
-        $maiores = $leiloeiro->getMaioresLances();
+        $maiores = $this->leiloeiro->getMaioresLances();
 
         // Verifica se o array de maiores lances tem no mínimo 3 lances
         $this->assertCount(3, $maiores);
@@ -81,6 +72,7 @@ class AvaliadorTest extends TestCase
         $this->assertEquals(1700, $maiores[2]->getValor());
     }
 
+    // DADOS
     public function leilaoEmOrdemCrescente()
     {
         $leilao = new Leilao('Fiat 147 0KM');
